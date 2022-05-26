@@ -144,3 +144,18 @@ buy_burger('fish', potato: true) #=> ArgumentError
 # **を付けてハッシュをキーワード引数としてりようできる
 params = { salad: true, potato: false }
 buy_burger('fish', **params)
+
+
+# 5.6.1 ハッシュで使用頻度の高いメソッド
+# keys: ハッシュのキーを配列として返す
+currencies = { japan: 'yen', us: 'dollar', india: 'rupee' }
+currencies.keys => #=> [:japan, :us, :india]
+# values: ハッシュの値を配列として変える
+currencies.values #=> ['yen', 'dollar', 'rupee']
+# has_key?/key?/include?/member?: ハッシュの中に指定されたキーが存在するかを確認する
+currencies.include?(:japan) #=> true
+# 参考: https://docs.ruby-lang.org/ja/latest/class/Enumerable.html
+#       https://docs.ruby-lang.org/ja/latest/class/Hash.html
+
+# 5.6.2 **でハッシュを展開させる
+

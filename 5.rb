@@ -96,4 +96,32 @@ currencies.delete('korea') { |key| "Not found: #{key}" } #=> 'Not found: korea'
 :apple.upcase! #=> NoMethodError
 
 # 5.3.2
- 
+# 特徴と主な用途
+# 見た目が文字列っぽいので理解しやすい
+# 内部的には整数なので比較が高速
+# 同じシンボルは同じオブジェクトなのでメモリの使用効率がいい
+# イミュータブルなのでかってに値を変えられる心配がない
+# => ソースコード上では名前を識別できるようにしたいけど、文字列じゃなくてもいい時によく使われる
+# => ハッシュのキーにシンボルを使うと高速に値を取り出せる
+currencies = { :japan => 'yen' }
+currencies[:japan]
+# 状態管理とかでも使われる(内部的に文字列である必要はないから)
+# status = :done
+# case status
+#   when :todo then 'todo'
+#   when :doing then 'doing'
+#   when :done then 'done'
+# end
+
+# キーをシンボルにする
+currencies = { japan: 'yen'}
+currencies[:japan]
+currncies[:italy] = 'euro'
+
+# キーのデータ型は混在していてもいい
+currencies = { a: '123', 'b': 456 }
+# データを操作するときはキーの型に合わせる
+currencies[:a]
+currencies['b']
+
+# 5.4.3 キーワード引数

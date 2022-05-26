@@ -125,3 +125,22 @@ currencies[:a]
 currencies['b']
 
 # 5.4.3 キーワード引数
+# デフォルトを指定できる
+def buy_burger(menu, drink: true, potato: true, sala: false)
+end
+
+# デフォルトがあるキーワード引数は省略できる
+# 引数を指定して渡せる
+# 順番も入れ替えられる
+buy_burger('fish'. salad: true, potato: false)
+# 存在しないキーワード引数を指定するとエラー
+buy_burger(sidemenu: 'pancake') #=> ArgumentError
+
+# デフォルトがない引数を省略するとエラー
+def buy_burger(menu, salad:, potato:)
+end
+buy_burger('fish', potato: true) #=> ArgumentError
+
+# **を付けてハッシュをキーワード引数としてりようできる
+params = { salad: true, potato: false }
+buy_burger('fish', **params)
